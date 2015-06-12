@@ -15,16 +15,14 @@ app.get('/pets', function (req, res) {
 });
 
 app.get('/addPets', function (req, res) {
-  var defaultPet = [{"name":"Heidi","kind":"Dog","age":3}, {"name":"Pluto","kind":"Dog","age":14}, {"name":"Tobie","kind":"Dog","age":4}];
-  myFirebaseRef.push({"name":"Heidi","kind":"Dog","age":3});
-  myFirebaseRef.push({"name":"Pluto","kind":"Dog","age":14});
-  myFirebaseRef.push({"name":"Tobie","kind":"Dog","age":4});
+  var defaultPet = [{"name":"Heidi","kind":"Dog","age":3}, {"name":"Pluto","kind":"Dog","age":14}, {"name":"Heidi","kind":"Dog","age":4}];
+  myFirebaseRef.set(defaultPet);
   res.send(defaultPet);
 });
 
 app.post('/pet', function (req, res) {
-  myFirebaseRef.push(req.body);
   res.send(req.body);
+  myFirebaseRef.push(req.body);
 });
 
 
